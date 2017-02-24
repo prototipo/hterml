@@ -9,7 +9,7 @@ conf/user.json
 ```
 default_user.json contains the basics to use the webpage, but you can change prompt, and configure the site.
 
-# Available styles
+### Available styles
 
 ```bash
 whi_style (by default)
@@ -17,11 +17,11 @@ mod_style (terminal with colors)
 pho_style (phosphor screen)
 ```
 
-# pathWithPages
+### pathWithPages
 
 You have to use it only if you want to add some handmade links or words to the directory listing of some page.
 
-# dirsWithElements
+### dirsWithElements
 
 Define every directory with its subdirectories.
 
