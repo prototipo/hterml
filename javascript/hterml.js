@@ -95,6 +95,7 @@ function setPathsWithPages(vars) {
 }
 
 function setDirsWithElements(vars) {
+    
     for (dir in vars) {
 	dirsWithElements[dir] = vars[dir];
     }
@@ -293,9 +294,16 @@ function changeTitle(pagetitle) {
 }
 
 function clickLink(n) {
-    $( ".current:nth(" + n + ")" ).click();
+    var link = $( ".current:nth(" + n + ")" );
+    if (link.attr("href") != "#") {
+	goToLink(link.attr("href"));
+    }
+    $( link ).click();
 }
 
+function goToLink(link) {
+    window.open(link, '_blank');
+}
 
 function scrollDown() {
     $("html, body").animate({ scrollTop: $( document ).height() }, "slow");
