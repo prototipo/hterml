@@ -105,12 +105,10 @@ function setDirsWithElements(vars) {
     var dirs = dirsWithElements;
     dirsWithElements = {};
     for (dir in dirs) {
-	console.log(dir);
 	dirsWithElements[dir] = {};
 	for (file in dirs[dir]) {
 	    var f = dirs[dir][file];
 	    dirsWithElements[dir][f] = vars[dir][f];
-	    console.log(dirs[dir][file]);
 	}
     }
 }
