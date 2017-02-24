@@ -1,0 +1,90 @@
+/**
+ * @license
+ * This file is part of hterml
+ *
+ * hterml is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * hterml is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with hterml.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: monospace;
+}
+
+/* Colors for different kinds of files have
+   been taken from
+https://askubuntu.com/questions/17299/what-do-the-different-colors-mean-in-ls */
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  /* White color for console text */
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a.directory:link,
+a.directory:visited,
+a.directory:hover,
+a.directory:active {
+  /* Blue color for directories */
+  color: #0000FF;
+}
+
+a.symlink:link,
+a.symlink:visited,
+a.symlink:hover,
+a.symlink:active {
+  /* Sky blue color for linked files */
+  color: #87CEEB;
+}
+
+a.executable:link,
+a.executable:visited,
+a.executable:hover,
+a.executable:active {
+  /* Green color for executable files */
+  color: #00FF00;
+}
+
+a.device:link,
+a.device:visited,
+a.device:hover,
+a.device:active {
+  /* Yellow color for devices */
+  color: #FFFF00;
+}
+
+a.image:link,
+a.image:visited,
+a.image:hover,
+a.image:active {
+  /* Pink color for images */
+  color: #FFC0CB;
+}
+
+a.archive:link,
+a.archive:visited,
+a.archive:hover,
+a.archive:active {
+  /* Red color for archives */
+  color: #FF0000;
+}
+
+a.deprecated:link,
+a.deprecated:visited,
+a.deprecated:hover,
+a.deprecated:active {
+  color: #FFFFFF;
+}

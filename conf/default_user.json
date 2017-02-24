@@ -1,0 +1,16 @@
+{
+	"basics" :
+	{
+		"style" : "whi_style",
+		"username" : "user",
+		"hostname" : "host"
+	},
+
+	"pathsWithPages" :
+	{
+	},
+
+	"dirsWithElements" :
+	{
+	}
+}
