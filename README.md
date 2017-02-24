@@ -4,13 +4,15 @@ You only have to download the lastest release.
 
 Files to be edited:
 
-```conf/user.json
+```bash
+conf/user.json
 ```
 default_user.json contains the basics to use the webpage, but you can change prompt, and configure the site.
 
 # Available styles
 
-```whi_style (by default)
+```bash
+whi_style (by default)
 mod_style (terminal with colors)
 pho_style (phosphor screen)
 ```
@@ -25,7 +27,8 @@ Define every directory with its subdirectories.
 
 The usual definition is:
 
-```"~" :
+```json
+"~" :
 {
     "some-things" : [ "directory" ],
     "funny-page"  : [ "symlink", "http://www.somefunnypage.com/go.html" ],
@@ -33,9 +36,8 @@ The usual definition is:
     "image"       : [ "image", "http://lotsofcats.com/beautiful_cat.jpg" ],
     "int-page"    : [ "archive", "things/past.txt" ]
 }
-```
-
-```html/present.html
+```bash
+html/present.html
 ```
 Here, you can put a presentation to your website.
 It will appear every time the page is loaded (or the command clear is used).
@@ -48,4 +50,4 @@ You can suggest more commands to be implemented, or implement them by yourself!
 
 Site of the author:
 
-(https://www.cs.us.es/~dorellana)
+https://www.cs.us.es/~dorellana
