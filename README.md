@@ -4,7 +4,8 @@ You only have to download the lastest release.
 
 Files to be edited:
 
-```conf/user.json```
+```conf/user.json
+```
 default_user.json contains the basics to use the webpage, but you can change prompt, and configure the site.
 
 # Available styles
@@ -34,7 +35,8 @@ The usual definition is:
 }
 ```
 
-```html/present.html```
+```html/present.html
+```
 Here, you can put a presentation to your website.
 It will appear every time the page is loaded (or the command clear is used).
 
