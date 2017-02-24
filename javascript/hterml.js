@@ -95,9 +95,23 @@ function setPathsWithPages(vars) {
 }
 
 function setDirsWithElements(vars) {
-    
     for (dir in vars) {
-	dirsWithElements[dir] = vars[dir];
+	dirsWithElements[dir] = [];
+	for (file in vars[dir]) {
+	    dirsWithElements[dir].push(file);
+	}
+	dirsWithElements[dir].sort();
+    }
+    var dirs = dirsWithElements;
+    dirsWithElements = {};
+    for (dir in dirs) {
+	console.log(dir);
+	dirsWithElements[dir] = {};
+	for (file in dirs[dir]) {
+	    var f = dirs[dir][file];
+	    dirsWithElements[dir][f] = vars[dir][f];
+	    console.log(dirs[dir][file]);
+	}
     }
 }
 
@@ -113,7 +127,7 @@ function getCss() {
     var css = "";
     css += '<link id="style" rel="stylesheet" type="text/css" href="';
     css += getStyle();
-    css += '.css">';
+    css += '">';
     return css;
 }
 
@@ -252,7 +266,7 @@ function printFile(filename) {
 function welcome() {
     $( "body" ).empty();
     $( "body" ).append("<pre></pre>");
-    console.clear();
+    // console.clear();
     printPrompt("/");
     $( "pre" ).append("present\n\n");
 
