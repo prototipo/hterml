@@ -36,6 +36,8 @@ The usual definition is:
     "image"       : [ "image", "http://lotsofcats.com/beautiful_cat.jpg" ],
     "int-page"    : [ "archive", "things/past.txt" ]
 }
+```
+
 ```bash
 html/present.html
 ```
