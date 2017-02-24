@@ -1,0 +1,14 @@
+{
+	"version" : "0.1",
+	"license" : "hterml v. <version>\nCopyright (C) 2017 David Orellana Martín.\nLicense GPLv3+: GNU GPL version 3 or later &lt;<a href=\"http://gnu.org/license/gpl.html\" target=\"_blank\">http://gnu.org/license/gpl.html</a>&gt;.\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by the law.\n\nWritten by David Orellana Martín (in emacs)\nYou can find this project's code at <a href=\"https://github.com/prototipo/hterml\" target=\"_blank\">GitHub</a>\n",
+	"commands" :
+	{
+
+		"65" : ["a", "about", "about hterml", 2],
+		"67" : ["c", "clear", "clear terminal", 2],
+		"72" : ["h", "help", "show this help", 2],
+		"76" : ["l", "ls", "list current directory", 1],
+		"80" : ["p", "pwd", "show current directory", 1],
+		"48-57,96-105" : ["0-9", "cd", "enter n-th directory", 1]
+	}
+}
