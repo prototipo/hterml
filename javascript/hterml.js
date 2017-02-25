@@ -95,14 +95,14 @@ function setPathsWithPages(vars) {
 }
 
 function setDirsWithElements(vars) {
+    var dirs = {};
     for (dir in vars) {
-	dirsWithElements[dir] = [];
+	dirs[dir] = [];
 	for (file in vars[dir]) {
-	    dirsWithElements[dir].push(file);
+	    dirs[dir].push(file);
 	}
-	dirsWithElements[dir].sort();
+	dirs[dir].sort();
     }
-    var dirs = dirsWithElements;
     dirsWithElements = {};
     for (dir in dirs) {
 	dirsWithElements[dir] = {};
