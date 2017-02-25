@@ -264,11 +264,13 @@ function printFile(filename) {
 function welcome() {
     $( "body" ).empty();
     $( "body" ).append("<pre></pre>");
-    // console.clear();
+    console.clear();
+    $( "pre" ).append("hterml v. " + htermlVersion + " loaded!\n" );
+    $( "pre" ).append("Click h for help\n\n");
     printPrompt("/");
     $( "pre" ).append("present\n\n");
 
-    $( "pre" ).append("Click h for help\n\n");
+
     printFile("html/present.html");
 }
 
