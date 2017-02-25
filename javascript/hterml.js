@@ -298,9 +298,9 @@ function reducedAppendData( pagetitle, filepath = "" ) {
 }
 
 function clearPrevious() {
-    $( "a" ).attr("onclick", "nothing()");
-    $( "a" ).attr("class", "deprecated");
-    $( "a" ).removeAttr("href");
+    $( "a:not('.permanent'" ).attr("onclick", "nothing()");
+    $( "a:not('.permanent')" ).attr("class", "deprecated");
+    $( "a:not('.permanent')" ).removeAttr("href");
 }
 
 function changeTitle(pagetitle) {

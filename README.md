@@ -44,6 +44,9 @@ html/present.html
 Here, you can put a presentation to your website.
 It will appear every time the page is loaded (or the command clear is used).
 
+If you want to add permanent links in this file (or to another link), you can add
+the class ```permanent``` to the ```a``` object.
+
 ## Contribute
 
 You can suggest more commands to be implemented, or implement them by yourself!
