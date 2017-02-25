@@ -298,7 +298,7 @@ function reducedAppendData( pagetitle, filepath = "" ) {
 }
 
 function clearPrevious() {
-    $( "a:not('.permanent'" ).attr("onclick", "nothing()");
+    $( "a:not('.permanent')" ).attr("onclick", "nothing()");
     $( "a:not('.permanent')" ).attr("class", "deprecated");
     $( "a:not('.permanent')" ).removeAttr("href");
 }
