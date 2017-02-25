@@ -36,11 +36,11 @@ The usual definition is:
     "image"       : [ "image", "http://lotsofcats.com/beautiful_cat.jpg" ],
     "int-page"    : [ "archive", "things/past.txt" ]
 }
-
+```
 Now, in version 0.2, you can add subdirectories even if the father dir is not defined.
 If you do it, a new directory will be added to the father directory, with all its corresponding subdirectories.
 
-```
+
 
 ```bash
 html/present.html
