@@ -65,7 +65,8 @@ function setVariables() {
     $.getJSON("conf/user.json", function(json) {
 	    setBasicVariables(json.basics);
 	    setPathsWithPages(json.pathWithPages);
-	    setDirsWithElements(json.dirsWithElements)
+	    var dirsWithElements = preparseDirsWithElements(json.dirsWithElements);
+	    setDirsWithElements(dirsWithElements)
 	});
     $.getJSON("conf/hterml.json", function(json) {
 	    htermlVersion = json.version;
@@ -94,10 +95,45 @@ function setPathsWithPages(vars) {
     }
 }
 
+function preparseDirsWithElements(dirsWithElements) {
+    var dirs = {};
+    for (dir in dirsWithElements) {
+	createDir(dirsWithElements, dirs, dir);
+    }
+    return dirs;
+}
+
+function createDir(dirsWithElements, dirs, dir) {
+    if (!dirs[dir]) {
+	dirs[dir] = {};
+    }
+    for (file in dirsWithElements[dir]) {
+	dirs[dir][file] = dirsWithElements[dir][file];
+    }
+    if (dir != "~") {
+	createSubdirs(dirs, dir);
+    }
+}
+
+function createSubdirs(dirs, dir) {
+    var previousPath = dir.split("/");
+    var currentFolder = previousPath.pop();
+    previousPath = previousPath.join("/");
+    if (!dirs[previousPath]) {
+	dirs[previousPath] = {};
+    }
+    dirs[previousPath][currentFolder] = [ "directory" ];
+    if (previousPath && previousPath != "~") {
+	createSubdirs(dirs, previousPath);
+    }
+}
+
 function setDirsWithElements(vars) {
     var dirs = {};
     for (dir in vars) {
-	dirs[dir] = [];
+	if (!dirs[dir]) {
+	    dirs[dir] = [];
+	}
 	for (file in vars[dir]) {
 	    dirs[dir].push(file);
 	}
@@ -264,7 +300,7 @@ function printFile(filename) {
 function welcome() {
     $( "body" ).empty();
     $( "body" ).append("<pre></pre>");
-    console.clear();
+    // console.clear();
     $( "pre" ).append("hterml v. " + htermlVersion + " loaded!\n" );
     $( "pre" ).append("Click h for help\n\n");
     printPrompt("/");
