@@ -309,7 +309,7 @@ function changeTitle(pagetitle) {
 
 function clickLink(n) {
     var link = $( ".current:nth(" + n + ")" );
-    if (link.attr("href") != "#") {
+    if (link.attr("href") && link.attr("href") != "#") {
 	goToLink(link.attr("href"));
     }
     $( link ).click();
