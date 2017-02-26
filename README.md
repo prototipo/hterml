@@ -31,11 +31,13 @@ The usual definition is:
 "~" :
 {
     "some-things" : [ "directory" ],
-    "funny-page"  : [ "symlink", "http://www.somefunnypage.com/go.html" ],
+    "funny-page"  : [ "symlink", "~/link/to/another/directory" ],
     "new-program" : [ "executable", "http://www.newprogram.com/program.exe" ],
+    "content-av"  : [ "device", "documents/projectR.pdf" ],
     "image"       : [ "image", "http://lotsofcats.com/beautiful_cat.jpg" ],
-    "int-page"    : [ "archive", "things/past.txt" ]
+    "ext-page"    : [ "archive", "http://www.hitsofthemoment.com/past.txt" ]
 }
+
 ```
 Now, in version 0.2, you can add subdirectories even if the father dir is not defined.
 If you do it, a new directory will be added to the father directory, with all its corresponding subdirectories.

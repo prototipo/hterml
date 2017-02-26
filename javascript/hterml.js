@@ -171,10 +171,13 @@ function getFilepath(pagetitle, fpath) {
 	var currentTitle = $( document ).find("title").text();
 	if (pagetitle === currentTitle) {
 	    filepath = ".";
-	} else if (pagetitle.includes(currentTitle)) {
+	} else if (pagetitle.startsWith(currentTitle)) {
 	    filepath = pagetitle.substring(currentTitle.length + 1);
+	} else if (currentTitle.startsWith(pagetitle)){
+	    var numberOfPoints = currentTitle.split("/").length - pagetitle.split("/").length;
+	    filepath = Array(numberOfPoints).fill("..").join("/");
 	} else {
-	    filepath = "..";
+	    filepath = pagetitle;
 	}
     }
     return filepath;
@@ -189,7 +192,7 @@ function getPrompt(e = "") {
     if (e == "") {
 	prompt += getPagetitle();
     } else {
-	prompt += e
+	prompt += e;
     }
     prompt += "$ ";
     return prompt;
@@ -239,18 +242,18 @@ function printLd(filepath) {
 		var fd = dirsWithElements[filepath][f];
 		var fs = "";
 		fs += '<a class="current ' + fd[0] + '" ';
-		if ( fd[0] === "directory" ) {
+		if ( fd[0] === "directory" ) { // Directory
 		    fs += 'onclick="appendData(\'' + filepath + '/' + f + '\')" href="#"';
-		} else if (fd[0] === "symlink" ) {
-		    fs +=  'target="_blank" href="' + fd[1] + '"';
-		} else if (fd[0] === "executable" ) {
+		} else if (fd[0] === "symlink" ) { // Symlink
+		    fs += 'onclick="appendData(\'' + fd[1] + '\')" href="#"'
+		} else if (fd[0] === "executable" ) { // Program
 		    fs += 'href="' + fd[1] + '"';
-		} else if (fd[0] === "device" ) {
-		    fs += '';
-		} else if (fd[0] === "image" ) {
+		} else if (fd[0] === "device" ) { // Internal link
+		    fs += 'href="' + fd[1] + '"';
+		} else if (fd[0] === "image" ) { // Picture
 		    fs += 'target="_blank" href="' + fd[1] + '"';
-		}else if (fd[0] === "archive" ) {
-		    fs += 'href ="' + fd[1] + '"';
+		}else if (fd[0] === "archive" ) { // External link
+		    fs += 'target="_blank" href="' + fd[1] + '"';
 		}
 		fs +=  '>' + f + '</a> ';
 		$( "pre" ).append(fs);
@@ -300,7 +303,7 @@ function printFile(filename) {
 function welcome() {
     $( "body" ).empty();
     $( "body" ).append("<pre></pre>");
-    // console.clear();
+    console.clear();
     $( "pre" ).append("hterml v. " + htermlVersion + " loaded!\n" );
     $( "pre" ).append("Click h for help\n\n");
     printPrompt("/");
