@@ -64,7 +64,7 @@ function setDefaults() {
 function setVariables() {
     $.getJSON("conf/user.json", function(json) {
 	    setBasicVariables(json.basics);
-	    setPathsWithPages(json.pathWithPages);
+	    setPathsWithPages(json.pathsWithPages);
 	    var dirsWithElements = preparseDirsWithElements(json.dirsWithElements);
 	    setDirsWithElements(dirsWithElements)
 	});
@@ -252,8 +252,10 @@ function printLd(filepath) {
 		    fs += 'href="' + fd[1] + '"';
 		} else if (fd[0] === "image" ) { // Picture
 		    fs += 'target="_blank" href="' + fd[1] + '"';
-		}else if (fd[0] === "archive" ) { // External link
+		} else if (fd[0] === "archive" ) { // External link
 		    fs += 'target="_blank" href="' + fd[1] + '"';
+		} else {
+		    fs += 'onclick="printCat(\'' + filepath + '\', \'' + f + '\')" href="#"';
 		}
 		fs +=  '>' + f + '</a> ';
 		$( "pre" ).append(fs);
@@ -261,6 +263,12 @@ function printLd(filepath) {
 	}
     }
     $( "pre" ).append("<br>");
+}
+
+function printCat(filepath, file) {
+    clearPrevious();
+    $( "pre" ).append("cat " + file + "\n");
+    printFile(pathsWithPages[filepath + "/" + file]);
 }
 
 function printPwd() {
@@ -303,7 +311,7 @@ function printFile(filename) {
 function welcome() {
     $( "body" ).empty();
     $( "body" ).append("<pre></pre>");
-    console.clear();
+    // console.clear();
     $( "pre" ).append("hterml v. " + htermlVersion + " loaded!\n" );
     $( "pre" ).append("Click h for help\n\n");
     printPrompt("/");
