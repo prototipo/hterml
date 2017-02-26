@@ -21,6 +21,12 @@ pho_style (phosphor screen)
 
 You have to use it only if you want to add some handmade links or words to the directory listing of some page.
 
+Then, you need to put the link to the html page like this:
+
+```json
+"~/path/to/virtual-file" : "personal/something.html"
+```
+
 ### dirsWithElements
 
 Define every directory with its subdirectories.

@@ -100,6 +100,14 @@ function preparseDirsWithElements(dirsWithElements) {
     for (dir in dirsWithElements) {
 	createDir(dirsWithElements, dirs, dir);
     }
+    for (path in pathsWithPages) {
+	var previousPath = path.split("/");
+	var file = previousPath.pop();
+	previousPath = previousPath.join("/");
+	console.log(previousPath);
+	dirs[previousPath][file] = [ "" ];
+	createSubdirs(dirs,previousPath);
+    }
     return dirs;
 }
 
