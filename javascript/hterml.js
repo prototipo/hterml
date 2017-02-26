@@ -104,7 +104,7 @@ function preparseDirsWithElements(dirsWithElements) {
 	var previousPath = path.split("/");
 	var file = previousPath.pop();
 	previousPath = previousPath.join("/");
-	dirs[previousPath][file] = [ "" ];
+	dirs[previousPath][file] = [ "file" ];
     }
     return dirs;
 }
@@ -260,7 +260,7 @@ function printLd(filepath) {
 		    fs += 'target="_blank" href="' + fd[1] + '"';
 		} else if (fd[0] === "archive" ) { // External link
 		    fs += 'target="_blank" href="' + fd[1] + '"';
-		} else {
+		} else if (fd[0] === "file" ) { // File
 		    fs += 'onclick="printCat(\'' + filepath + '\', \'' + f + '\')" href="#"';
 		}
 		fs +=  '>' + f + '</a> ';
