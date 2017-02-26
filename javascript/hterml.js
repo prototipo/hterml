@@ -104,9 +104,7 @@ function preparseDirsWithElements(dirsWithElements) {
 	var previousPath = path.split("/");
 	var file = previousPath.pop();
 	previousPath = previousPath.join("/");
-	console.log(previousPath);
 	dirs[previousPath][file] = [ "" ];
-	createSubdirs(dirs,previousPath);
     }
     return dirs;
 }
@@ -319,7 +317,7 @@ function printFile(filename) {
 function welcome() {
     $( "body" ).empty();
     $( "body" ).append("<pre></pre>");
-    // console.clear();
+    console.clear();
     $( "pre" ).append("hterml v. " + htermlVersion + " loaded!\n" );
     $( "pre" ).append("Click h for help\n\n");
     printPrompt("/");
