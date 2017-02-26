@@ -274,7 +274,7 @@ function printLd(filepath) {
 function printCat(filepath, file) {
     clearPrevious();
     $( "pre" ).append("cat " + file + "\n");
-    printFile(pathsWithPages[filepath + "/" + file]);
+    printFile(pathsWithPages[filepath + "/" + file], 1);
 }
 
 function printPwd() {
@@ -290,12 +290,15 @@ function printLsa() {
     printPrompt();
 }
 
-function printFile(filename) {
+function printFile(filename, o = 0) {
     if (filename) {
 	$.get(filename, function(data) {
 		$( "pre" ).append(data);
 		if (! filename.startsWith("html/")) {
 		    printPrompt();
+		    if (o) {
+			printLsa();
+		    }
 		} else {
 		    printPrompt("/");
 		    printCd("~");
@@ -303,9 +306,8 @@ function printFile(filename) {
 		    printLs("~");
 		    reducedAppendData("~", "~");
 		}
-	    });
-    }
-    if ( ! filename ) {
+	});
+    } else {
 	printPrompt();
     }
 }
