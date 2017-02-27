@@ -64,7 +64,6 @@ function setDefaults() {
 function setVariables() {
     $.getJSON("conf/user.json", function(json) {
 	    setBasicVariables(json.basics);
-	    setPathsWithPages(json.pathsWithPages);
 	    var dirsWithElements = preparseDirsWithElements(json.dirsWithElements);
 	    setDirsWithElements(dirsWithElements)
 	});
@@ -89,22 +88,10 @@ function setBasicVariables(vars) {
     $( "#style" ).attr("href", getStyle());
 }
 
-function setPathsWithPages(vars) {
-    for (path in vars) {
-	pathsWithPages[path] = vars[path];
-    }
-}
-
 function preparseDirsWithElements(dirsWithElements) {
     var dirs = {};
     for (dir in dirsWithElements) {
 	createDir(dirsWithElements, dirs, dir);
-    }
-    for (path in pathsWithPages) {
-	var previousPath = path.split("/");
-	var file = previousPath.pop();
-	previousPath = previousPath.join("/");
-	dirs[previousPath][file] = [ "file" ];
     }
     return dirs;
 }
@@ -242,30 +229,28 @@ function printLd(filepath) {
 	prevFilepath = prevFilepath.join("/");
 	$( "pre" ).append('<a class="current directory" onclick="appendData(\'' + filepath + '\')" href="#">.</a> <a class="current directory" onclick="appendData(\'' + prevFilepath + '\')" href="#">..</a> ');
     }
-    if ( ! pathsWithPages[filepath] ) {
-	if ( dirsWithElements[filepath] ) {
-	    for (f in dirsWithElements[filepath]) {
-		var fd = dirsWithElements[filepath][f];
-		var fs = "";
-		fs += '<a class="current ' + fd[0] + '" ';
-		if ( fd[0] === "directory" ) { // Directory
-		    fs += 'onclick="appendData(\'' + filepath + '/' + f + '\')" href="#"';
-		} else if (fd[0] === "symlink" ) { // Symlink
-		    fs += 'onclick="appendData(\'' + fd[1] + '\')" href="#"'
-		} else if (fd[0] === "executable" ) { // Program
-		    fs += 'href="' + fd[1] + '"';
-		} else if (fd[0] === "device" ) { // Internal link
-		    fs += 'href="' + fd[1] + '"';
-		} else if (fd[0] === "image" ) { // Picture
-		    fs += 'target="_blank" href="' + fd[1] + '"';
-		} else if (fd[0] === "archive" ) { // External link
-		    fs += 'target="_blank" href="' + fd[1] + '"';
-		} else if (fd[0] === "file" ) { // File
-		    fs += 'onclick="printCat(\'' + filepath + '\', \'' + f + '\')" href="#"';
-		}
-		fs +=  '>' + f + '</a> ';
-		$( "pre" ).append(fs);
+    if ( dirsWithElements[filepath] ) {
+	for (f in dirsWithElements[filepath]) {
+	    var fd = dirsWithElements[filepath][f];
+	    var fs = "";
+	    fs += '<a class="current ' + fd[0] + '" ';
+	    if ( fd[0] === "directory" ) { // Directory
+		fs += 'onclick="appendData(\'' + filepath + '/' + f + '\')" href="#"';
+	    } else if (fd[0] === "symlink" ) { // Symlink
+		fs += 'onclick="appendData(\'' + fd[1] + '\')" href="#"'
+	    } else if (fd[0] === "executable" ) { // Program
+		fs += 'href="' + fd[1] + '"';
+	    } else if (fd[0] === "device" ) { // Internal link
+		fs += 'href="' + fd[1] + '"';
+	    } else if (fd[0] === "image" ) { // Picture
+		fs += 'target="_blank" href="' + fd[1] + '"';
+	    } else if (fd[0] === "archive" ) { // External link
+		fs += 'target="_blank" href="' + fd[1] + '"';
+	    } else if (fd[0] === "file" ) { // File
+		fs += 'onclick="printCat(\'' + filepath + '\', \'' + f + '\')" href="#"';
 	    }
+	    fs +=  '>' + f + '</a> ';
+	    $( "pre" ).append(fs);
 	}
     }
     $( "pre" ).append("<br>");
@@ -274,7 +259,7 @@ function printLd(filepath) {
 function printCat(filepath, file) {
     clearPrevious();
     $( "pre" ).append("cat " + file + "\n");
-    printFile(pathsWithPages[filepath + "/" + file], 1);
+    printFile(dirsWithElements[filepath][file][1], 1);
 }
 
 function printPwd() {
@@ -332,23 +317,21 @@ function welcome() {
 function appendData( pagetitle, filepath = "" ) {
     clearPrevious();
     var filepath = getFilepath(pagetitle, filepath);
-    var filename = pathsWithPages[pagetitle];
     changeTitle(pagetitle);
     printCd(filepath);
     printPrompt();
     printLs(pagetitle);
     printLd(filepath);
-    printFile(filename);
+    printFile();
     scrollDown();
 }
 
 function reducedAppendData( pagetitle, filepath = "" ) {
     clearPrevious();
     var filepath = getFilepath(pagetitle, filepath);
-    var filename = pathsWithPages[pagetitle];
     changeTitle(pagetitle);
     printLd(filepath);
-    printFile(filename);
+    printFile();
     scrollDown();
 }
 
@@ -429,7 +412,6 @@ function pwd() {
 var username = "";
 var hostname = "";
 var style = "";
-var pathsWithPages = {};
 var dirsWithElements = {};
 var htermlVersion = "0.0";
 var licenseString = "";

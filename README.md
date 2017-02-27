@@ -17,16 +17,6 @@ mod_style (terminal with colors)
 pho_style (phosphor screen)
 ```
 
-### pathWithPages
-
-You have to use it only if you want to add some handmade links or words to the directory listing of some page.
-
-Then, you need to put the link to the html page like this:
-
-```json
-"~/path/to/virtual-file" : "personal/something.html"
-```
-
 ### dirsWithElements
 
 Define every directory with its subdirectories.
@@ -41,7 +31,8 @@ The usual definition is:
     "new-program" : [ "executable", "http://www.newprogram.com/program.exe" ],
     "content-av"  : [ "device", "documents/projectR.pdf" ],
     "image"       : [ "image", "http://lotsofcats.com/beautiful_cat.jpg" ],
-    "ext-page"    : [ "archive", "http://www.hitsofthemoment.com/past.txt" ]
+    "ext-page"    : [ "archive", "http://www.hitsofthemoment.com/past.txt" ],
+    "html-file"   : [ "file", "personal/itsgoingtocatit.txt" ]
 }
 
 ```
