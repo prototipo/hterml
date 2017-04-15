@@ -15,10 +15,25 @@
  * along with hterml.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+html {
+  max-width: 100%;
+}
+
 body {
   background-color: #000000;
   color: #FFFFFF;
   font-family: monospace;
+  max-width: 100%;
+}
+
+.lsfiles {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.lsfiles a {
+  display: inline-block;
+  margin-right: 5pt;
 }
 
 /* Colors for different kinds of files have

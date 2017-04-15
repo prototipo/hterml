@@ -21,6 +21,16 @@ body {
   font-family: monospace;
 }
 
+.lsfiles {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.lsfiles a {
+  display: inline-block;
+  margin-right: 5pt;
+}
+
 a:link,
 a:visited,
 a:hover,

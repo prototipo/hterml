@@ -223,16 +223,17 @@ function printLs(pagetitle) {
 
 function printLd(filepath) {
     filepath = getPagetitle();
+    var fs = ""
+    fs += '<div class="lsfiles">';
     if (filepath != "~") {
 	var prevFilepath = filepath.split("/");
 	prevFilepath.pop();
 	prevFilepath = prevFilepath.join("/");
-	$( "pre" ).append('<a class="current directory" onclick="appendData(\'' + filepath + '\')" href="#">.</a> <a class="current directory" onclick="appendData(\'' + prevFilepath + '\')" href="#">..</a> ');
+	fs += '<a class="current directory" onclick="appendData(\'' + filepath + '\')" href="#">.</a> <a class="current directory" onclick="appendData(\'' + prevFilepath + '\')" href="#">..</a>';
     }
     if ( dirsWithElements[filepath] ) {
 	for (f in dirsWithElements[filepath]) {
 	    var fd = dirsWithElements[filepath][f];
-	    var fs = "";
 	    fs += '<a class="current ' + fd[0] + '" ';
 	    if ( fd[0] === "directory" ) { // Directory
 		fs += 'onclick="appendData(\'' + filepath + '/' + f + '\')" href="#"';
@@ -249,11 +250,11 @@ function printLd(filepath) {
 	    } else if (fd[0] === "file" ) { // File
 		fs += 'onclick="printCat(\'' + filepath + '\', \'' + f + '\')" href="#"';
 	    }
-	    fs +=  '>' + f + '</a> ';
-	    $( "pre" ).append(fs);
+	    fs +=  '>' + f + '</a>';
 	}
     }
-    $( "pre" ).append("<br>");
+    fs += '</div>';
+    $( "pre" ).append(fs);
 }
 
 function printCat(filepath, file) {
