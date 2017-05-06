@@ -65,13 +65,19 @@ function setVariables() {
     $.getJSON("conf/user.json", function(json) {
 	    setBasicVariables(json.basics);
 	    var dirsWithElements = preparseDirsWithElements(json.dirsWithElements);
-	    setDirsWithElements(dirsWithElements)
+	    setDirsWithElements(dirsWithElements);
+	    for (var key in json.commands) {
+		commands[key] = json.commands[key];
+	    }
 	});
     $.getJSON("conf/hterml.json", function(json) {
 	    htermlVersion = json.version;
 	    licenseString = json.license;
 	    licenseString = licenseString.replace("<version>", htermlVersion);
-	    commands = json.commands;
+	    for (var key in json.commands) {
+		commands[key] = json.commands[key];
+	    }
+	    // commands = json.commands
 	});
 }
 

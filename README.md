@@ -36,10 +36,31 @@ The usual definition is:
 }
 
 ```
-Now, in version 0.2, you can add subdirectories even if the father dir is not defined.
+From version 0.2, you can add subdirectories even if the father dir is not defined.
 If you do it, a new directory will be added to the father directory, with all its corresponding subdirectories.
 
+### commands
 
+From version 0.3, you can define your own functions right here!
+To do this, add the function name right here like this:
+
+```json
+"commands" :
+{
+    "84" : ["t", "thesimpsons", "???", 3]
+}
+```
+
+Where:
+- 84 is the number of the key that you want to push (visit http://www.theasciicode.com.ar/ to know which are the numbers).
+- "t" is the key (it is only explanatory).
+- "thesimpsons" is the command defined in custom_commands.js (it is important! It has to have the same name!).
+- "???" is the definition (not so explanatory in this case...) of what the command does.
+- 3 is the number of tabs printed in help (you will need to look when it looks fine).
+
+In the file ```custom_commands.js``` you will need to define all the custom functions. Remember to add
+```clearPrevious()``` at the beginning, in order to disable previous links, and ```printPrompt()``` at
+the end, to have the new prompt printed out to the "terminal".
 
 ```bash
 html/present.html
