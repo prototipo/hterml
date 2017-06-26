@@ -1,5 +1,5 @@
 {
-	"version" : "0.3",
+	"version" : "0.31",
 	"license" : "hterml v. <version>\nCopyright (C) 2017 <a href=\"https://www.cs.us.es/~dorellana/\" target=\"_blank\">David Orellana Martín</a>.\nLicense GPLv3+: GNU GPL version 3 or later &lt;<a href=\"http://gnu.org/license/gpl.html\" target=\"_blank\">http://gnu.org/license/gpl.html</a>&gt;.\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by the law.\n\nWritten by David Orellana Martín (in emacs)\nYou can find this project's code at <a href=\"https://github.com/prototipo/hterml\" target=\"_blank\">GitHub</a>\n",
 	"commands" :
 	{

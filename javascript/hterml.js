@@ -59,6 +59,7 @@ function setDefaults() {
     username = "user";
     hostname = "host";
     style = "whi_style";
+    title = "";
 }
 
 function setVariables() {
@@ -90,6 +91,9 @@ function setBasicVariables(vars) {
     }
     if ( vars.hostname ) {
 	hostname = vars.hostname;
+    }
+    if ( vars.title ) {
+	title = vars.title;
     }
     $( "#style" ).attr("href", getStyle());
 }
@@ -198,7 +202,8 @@ function getPrompt(e = "") {
 }
 
 function getPagetitle() {
-    return $( document ).find("title").text();
+    var pagetitle = $( document ).find('title').text().split("|");
+    return pagetitle[pagetitle.length-1].trim();
 }
 
 /**
@@ -349,7 +354,7 @@ function clearPrevious() {
 }
 
 function changeTitle(pagetitle) {
-    $( document ).prop('title', pagetitle);
+    $( document ).prop('title', title + " | " + pagetitle);
 }
 
 function clickLink(n) {

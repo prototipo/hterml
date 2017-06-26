@@ -3,7 +3,8 @@
 	{
 		"style" : "whi_style",
 		"username" : "user",
-		"hostname" : "host"
+		"hostname" : "host",
+	        "title" : "homepage"
 	},
 
 	"dirsWithElements" :
