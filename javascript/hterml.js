@@ -354,7 +354,12 @@ function clearPrevious() {
 }
 
 function changeTitle(pagetitle) {
-    $( document ).prop('title', title + " | " + pagetitle);
+    var newtitle = "";
+    if ( title != "" ) {
+	newtitle += title + " | ";
+    }
+    newtitle += pagetitle;
+    $( document ).prop('title', newtitle);
 }
 
 function clickLink(n) {
