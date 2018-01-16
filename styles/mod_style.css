@@ -31,6 +31,10 @@ body {
   overflow-x: hidden;
 }
 
+pre {
+  white-space: pre-wrap;
+}
+
 .lsfiles a {
   display: inline-block;
   margin-right: 5pt;
