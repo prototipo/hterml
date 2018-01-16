@@ -36,31 +36,10 @@ The usual definition is:
 }
 
 ```
-From version 0.2, you can add subdirectories even if the father dir is not defined.
+Now, in version 0.2, you can add subdirectories even if the father dir is not defined.
 If you do it, a new directory will be added to the father directory, with all its corresponding subdirectories.
 
-### commands
 
-From version 0.3, you can define your own functions right here!
-To do this, add the function name right here like this:
-
-```json
-"commands" :
-{
-    "84" : ["t", "thesimpsons", "???", 3]
-}
-```
-
-Where:
-- 84 is the number of the key that you want to push (visit http://www.theasciicode.com.ar/ to know which are the numbers).
-- "t" is the key (it is only explanatory).
-- "thesimpsons" is the command defined in custom_commands.js (it is important! It has to have the same name!).
-- "???" is the definition (not so explanatory in this case...) of what the command does.
-- 3 is the number of tabs printed in help (you will need to look when it looks fine).
-
-In the file ```custom_commands.js``` you will need to define all the custom functions. Remember to add
-```clearPrevious()``` at the beginning, in order to disable previous links, and ```printPrompt()``` at
-the end, to have the new prompt printed out to the "terminal".
 
 ```bash
 html/present.html
@@ -70,6 +49,8 @@ It will appear every time the page is loaded (or the command clear is used).
 
 If you want to add permanent links in this file (or to another link), you can add
 the class ```permanent``` to the ```a``` object.
+
+For links to be useful only for "one turn", that is, links within a html file that will be shown and inmediately a ```ls``` is executed, then the class ```provisional``` can be useful.
 
 ## Contribute
 

@@ -348,9 +348,10 @@ function reducedAppendData( pagetitle, filepath = "" ) {
 }
 
 function clearPrevious() {
-    $( "a:not('.permanent')" ).attr("onclick", "nothing()");
-    $( "a:not('.permanent')" ).attr("class", "deprecated");
-    $( "a:not('.permanent')" ).removeAttr("href");
+    $( "a:not('.permanent,.provisional')" ).attr("onclick", "nothing()");
+    $( "a:not('.permanent,.provisional')" ).attr("class", "deprecated");
+    $( "a:not('.permanent,.provisional')" ).removeAttr("href");
+    $( ".provisional" ).removeClass( "provisional" );
 }
 
 function changeTitle(pagetitle) {
